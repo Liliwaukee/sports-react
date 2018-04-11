@@ -7,7 +7,7 @@ import AppBar from 'material-ui/AppBar';
  */
 const AppBarExampleIcon = () => (
   <AppBar
-    title="Bienvenido"
+    title="Sport Portal"
     iconClassNameRight="muidocs-icon-navigation-expand-more"
   />
 );
