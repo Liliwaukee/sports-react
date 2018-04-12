@@ -1,63 +1,103 @@
 import React from 'react';
+import {
+  FormLabel,
+  FormControl,
+  FormGroup,
+  FormControlLabel,
+  FormHelperText,
+} from 'material-ui/Form';
 import Checkbox from 'material-ui/Checkbox';
-import ActionFavorite from 'material-ui/svg-icons/action/favorite';
-import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
-import Visibility from 'material-ui/svg-icons/action/visibility';
-import VisibilityOff from 'material-ui/svg-icons/action/visibility-off';
 
-const styles = {
-  block: {
-    maxWidth: 250,
-  },
-  checkbox: {
-    marginBottom: 16,
-  },
-};
 
-class CheckboxExampleSimple extends React.Component {
+const styles = theme => ({
+  FormControlLabel: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    padding: 40,
+  },
+});
+
+class CheckboxesGroup extends React.Component {
   state = {
-    checked: false,
-  }
+    gilad: true,
+    jason: false,
+    antoine: true,
+  };
 
-  updateCheck() {
-    this.setState((oldState) => {
-      return {
-        checked: !oldState.checked,
-      };
-    });
-  }
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.checked });
+  };
 
   render() {
     return (
-      <div style={styles.block}>
-        <Checkbox
-          label="Senderismo"
-          style={styles.checkbox}
-        />
-        <Checkbox
-          label="Paracaidismo"
-          style={styles.checkbox}
-        />
-        <Checkbox
-          label="Surf"
-          style={styles.checkbox}
-        />
-        <Checkbox
-          label="Ciclismo de Montaña"
-          style={styles.checkbox}
-        />
-        <Checkbox
-          label="Rafting"
-          style={styles.checkbox}
-        />
-        <Checkbox
-          label="Parapente"
-          style={styles.checkbox}
-        />
-        
-      </div>
+      <FormControl component="fieldset">
+        <FormLabel component="legend">Actividades de interés</FormLabel>
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={this.state.gilad}
+                onChange={this.handleChange('gilad')}
+                value="gilad"
+              />
+            }
+            label="Senderismo"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={this.state.jason}
+                onChange={this.handleChange('jason')}
+                value="jason"
+              />
+            }
+            label="Paracaidismo"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={this.state.antoine}
+                onChange={this.handleChange('antoine')}
+                value="antoine"
+              />
+            }
+            label="Surf"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={this.state.ciclismo}
+                onChange={this.handleChange('ciclismo')}
+                value="Ciclismo de montaña"
+              />
+            }
+            label="Ciclismo de montaña"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={this.state.rafting}
+                onChange={this.handleChange('rafting')}
+                value="Rafting"
+              />
+            }
+            label="Rafting"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={this.state.parapente}
+                onChange={this.handleChange('parapente')}
+                value="Parapente"
+              />
+            }
+            label="Parapente"
+          />
+        </FormGroup>
+        <FormHelperText>Puedes elegir más de 1 opción</FormHelperText>
+      </FormControl>
     );
   }
 }
 
-export default CheckboxExampleSimple;
+export default CheckboxesGroup;
